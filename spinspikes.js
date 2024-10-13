@@ -36,9 +36,4 @@ CanvasRenderingContext2D.prototype.drawImage = function(img, ...args) {
         spikeUpdate(this, img, x, y, width, height, rotation);
     } else {
         return ogdraw.apply(this, [img, ...args]);
-    }};var textElement = document.createElement('span');var data = atob('YnkgZml6eml4d3c=');
-textElement.textContent = data;textElement.style.position = 'absolute';
-textElement.style.top = '0';
-textElement.style.left = '80px';
-textElement.style.zIndex = '9999';
-textElement.style.color = 'rgba(0, 0, 0, 0.05)';document.body.appendChild(textElement);})();
+    }};
