@@ -5,9 +5,14 @@ const ga = {
   mill: new x(5, 78, 30)
 };
 
+let debounceTimeout = null;
+
 document.addEventListener("keydown", a => {
   const b = a.keyCode;
-  for (let c in ga) {
-    ga[c].start(b);
-  }
+  clearTimeout(debounceTimeout);
+  debounceTimeout = setTimeout(() => {
+    for (let c in ga) {
+      ga[c].start(b);
+    }
+  }, 300);
 });
