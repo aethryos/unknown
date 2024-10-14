@@ -18,23 +18,35 @@ if (ca.enemy && O[2].enabled) {
         this.place(4, this.x + Math.cos(behindDirection) * 50, this.y + Math.sin(behindDirection) * 50);
       }
 
-      // Optimized angle calculations
-      const angleStep = Math.PI / 24;
-      const angles = Array.from({ length: 24 }, (_, i) => enemyDirection + (i - 12) * angleStep);
+      // Aggressive angle calculations
+      const angleStep = Math.PI / 12;
+      const angles = Array.from({ length: 36 }, (_, i) => enemyDirection + (i - 18) * angleStep);
       const scores = angles.map(angle => ({
         angle,
         score: s.distance(ca.enemy, this, angle) * Math.cos(s.direction(ca.enemy, this, angle) - enemyDirection)
       }));
 
-      const topScores = quickselect(scores, 10);
+      const topScores = quickselect(scores, 15);
       const validAngles = topScores.map(({ angle }) => angle);
 
       ca.angles = validAngles;
       this.place(4, ...validAngles);
 
-      // Additional spammy trap placement
-      const spamAngles = Array.from({ length: 10 }, (_, i) => enemyDirection + (i - 5) * angleStep);
+      // Additional aggressive trap placement
+      const spamAngles = Array.from({ length: 15 }, (_, i) => enemyDirection + (i - 7) * angleStep);
       this.place(4, ...spamAngles);
+
+      // Adaptive trap placement
+      const adaptAngles = Array.from({ length: 10 }, (_, i) => enemyDirection + (i - 5) * angleStep);
+      const adaptScores = adaptAngles.map(angle => ({
+        angle,
+        score: s.distance(ca.enemy, this, angle) * Math.cos(s.direction(ca.enemy, this, angle) - enemyDirection)
+      }));
+
+      const topAdaptScores = quickselect(adaptScores, 5);
+      const adaptValidAngles = topAdaptScores.map(({ angle }) => angle);
+
+      this.place(4, ...adaptValidAngles);
     } else {
       ca.angles = [enemyDirection];
       this.place(7, enemyDirection);
