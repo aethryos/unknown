@@ -1,20 +1,27 @@
-function placeItem(keyCode) {
-  switch (keyCode) {
-    case 86: // V
-      this.place(4); // Spike
-      break;
-    case 70: // F
-      this.place(7); // Trap
-      break;
-    case 78: // N
-      this.place(5); // Mill
-      break;
-    case 81: // Q
-      this.place(2); // Heal
-      break;
+const KEY_CODES = {
+  spike: 86, // V
+  trap: 70, // F
+  mill: 78, // N
+  food: 81  // Q
+};
+
+class Macro {
+  constructor(advanced) {
+    this.advanced = advanced;
+  }
+
+  update() {
+    if (keyDown[KEY_CODES.spike]) {
+      this.place(4);
+    }
+    if (keyDown[KEY_CODES.trap]) {
+      this.place(7);
+    }
+    if (keyDown[KEY_CODES.mill]) {
+      this.place(5);
+    }
+    if (keyDown[KEY_CODES.food]) {
+      this.place(2);
+    }
   }
 }
-
-document.addEventListener("keydown", a => {
-  placeItem(a.keyCode);
-});
