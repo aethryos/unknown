@@ -1,19 +1,15 @@
-class Macro {
-    constructor(advanced, spike, trap, mill, food) {
-        this.advanced = advanced;
-        this.spike = spike;
-        this.trap = trap;
-        this.mill = mill;
-        this.food = food;
-    };
+const KEY_CODES = {
+    spike: 86, // V
+    trap: 70, // F
+    mill: 78, // N
+    food: 81  // Q
+};
 
+class Macro {
     update() {
         setTimeout(() => {
-
-            if (keyDown[this.spike]) Sploop.newPlace(4);
-            if (keyDown[this.trap]) Sploop.newPlace(7);
-            if (keyDown[this.mill]) Sploop.newPlace(5);
-            if (keyDown[this.food]) Sploop.newPlace(2);
-        }, 14);
-    };
-};
+            if (keyDown[KEY_CODES.spike]) this.place(4);
+            if (keyDown[KEY_CODES.trap]) this.place(7);
+            if (keyDown[KEY_CODES.mill]) this.place(5);
+            if (keyDown[KEY_CODES.food]) this.place(2);
+        }, 
