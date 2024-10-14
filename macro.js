@@ -1,32 +1,13 @@
-const KEY_CODES = {
-  spike: 86, // V
-  trap: 70, // F
-  mill: 78, // N
-  food: 81  // Q
+const ga = {
+  spike: new x(4, 86, 30),
+  trap: new x(7, 70, 30),
+  heal: new x(2, 81, 30),
+  mill: new x(5, 78, 30)
 };
 
-class Macro {
-  constructor(advanced) {
-    this.advanced = advanced;
-    this.place = this.place.bind(this);
+document.addEventListener("keydown", a => {
+  const b = a.keyCode;
+  for (let c in ga) {
+    ga[c].start(b);
   }
-
-  init() {
-    document.addEventListener("keydown", event => {
-      switch (event.keyCode) {
-        case KEY_CODES.spike:
-          this.place(4);
-          break;
-        case KEY_CODES.trap:
-          this.place(7);
-          break;
-        case KEY_CODES.mill:
-          this.place(5);
-          break;
-        case KEY_CODES.food:
-          this.place(2);
-          break;
-      }
-    });
-  }
-}
+});
