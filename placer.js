@@ -1,11 +1,12 @@
-if (ca.enemy && O[2].enabled) { 
-  const enemyDistance = s.distance(this, ca.enemy); 
-  const enemyDirection = s.direction(ca.enemy, this); 
+if (ca.enemy && O[2].enabled) {
+  const enemyDistance = s.distance(this, ca.enemy);
+  const enemyDirection = s.direction(ca.enemy, this);
   const dist = +document.querySelector("#chat-0").value;
 
-  if (enemyDistance <= dist) { 
-    const trapEntity = ca.entities.find(a => a && s.distance(a, ca.enemy) < 60 && a.type === 6 && this.mine(a)); 
+  if (enemyDistance <= dist) {
+    const trapEntity = ca.entities.find(a => a && s.distance(a, ca.enemy) < 60 && a.type === 6 && this.mine(a));
     const trapDirection = trapEntity ? s.direction(trapEntity, this) : null;
+
     if (trapEntity) {
       const angleDiff = Math.abs(enemyDirection - trapDirection);
       const isEnemyInFront = angleDiff < Math.PI / 2;
@@ -17,9 +18,9 @@ if (ca.enemy && O[2].enabled) {
         this.place(4, this.x + Math.cos(behindDirection) * 50, this.y + Math.sin(behindDirection) * 50);
       }
 
-      // Aggressive angle calculations
-      const angleStep = Math.PI / 12;
-      const angles = Array.from({ length: 36 }, (_, i) => enemyDirection + (i - 18) * angleStep);
+      // High-accuracy angle calculations
+      const angleStep = 0.1 * Math.PI / 180; // 0.1 degrees
+      const angles = Array.from({ length: 3600 }, (_, i) => enemyDirection + i * angleStep);
       const scores = angles.map(angle => ({
         angle,
         score: s.distance(ca.enemy, this, angle) * Math.cos(s.direction(ca.enemy, this, angle) - enemyDirection)
