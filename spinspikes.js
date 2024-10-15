@@ -1,11 +1,9 @@
-const spinSpeed = 0.6;
+const spinSpeed = 1.0;
 
 (function() {
   const spikeUrls = new Set([
     //Remove spikes that you do not want to spin
-    "https://sploop.io/img/entity/spike.png?v=1923912",
     "https://sploop.io/img/entity/hard_spike.png?v=1923912",
-    "https://sploop.io/img/entity/big_spike.png?v=1923912",
 ]);
 const spikeUpdate = (ctx, img, x, y, width, height, rotation) => {
     ctx.save();
@@ -37,15 +35,3 @@ CanvasRenderingContext2D.prototype.drawImage = function(img, ...args) {
     } else {
         return ogdraw.apply(this, [img, ...args]);
     }};
-
-  let gridToggleElement = document.querySelector("#grid-toggle");
-    if (gridToggleElement.checked) {
-      console.log("disabling grids")
-      gridToggleElement.click();
-    }
-let displayPingToggleElement = document.querySelector("#display-ping-toggle");
-if (displayPingToggleElement.checked) {
-    console.log("very cool script by very cool dude")
-} else {
-      displayPingToggleElement.click();
-}
