@@ -1,9 +1,10 @@
-const spinSpeed = 1.0;
-
+const spinSpeed = 0.9;
 (function() {
   const spikeUrls = new Set([
     //Remove spikes that you do not want to spin
+    "https://sploop.io/img/entity/spike.png?v=1923912",
     "https://sploop.io/img/entity/hard_spike.png?v=1923912",
+    "https://sploop.io/img/entity/big_spike.png?v=1923912",
 ]);
 const spikeUpdate = (ctx, img, x, y, width, height, rotation) => {
     ctx.save();
