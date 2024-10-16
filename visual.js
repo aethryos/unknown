@@ -217,3 +217,7 @@ border-radius: 25px;
 
 let hp2 = document.getElementById('hp2');
 var text = document.getElementById("trueorfalse");
+    const grid = document.querySelector('#grid-toggle');
+    const pingshw = document.querySelector('#display-ping-toggle');
+    grid.click();
+    pingshw.click();
