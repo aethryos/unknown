@@ -17,24 +17,11 @@
     box-shadow: none;
     color: white;
     }
-    .menu .content .menu-item {
-    }
-    #main-content {
-    width: auto;
-    }
-    #hat-menu {
-    }
     #hat_menu_content {
     padding: initial;
     }
     .menu .content .menu-item {
     border: none !important;
-    }
-    #server-select {
-    width: 340px;
-    }q
-    #game-middle-main {
-    height: 310px;
     }
     #homepage {
     background-image: url('') !important;
