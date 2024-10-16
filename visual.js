@@ -217,14 +217,3 @@ border-radius: 25px;
 
 let hp2 = document.getElementById('hp2');
 var text = document.getElementById("trueorfalse");
-let gridToggleElement = document.querySelector("#grid-toggle");
-    if (gridToggleElement.checked) {
-      console.log("disabling grids")
-      gridToggleElement.click();
-    }
-let displayPingToggleElement = document.querySelector("#display-ping-toggle");
-if (displayPingToggleElement.checked) {
-    console.log("very cool script by very cool dude")
-} else {
-      displayPingToggleElement.click();
-}
