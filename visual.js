@@ -29,32 +29,5 @@
     `;
     $("body").append(SploopStyle)
 
-    const enhanceFillRect = function (fill, cColor) {
-        return function (x, y, width, height) {
-            if (this.fillStyle === "#a4cc4f") {
-                this.fillStyle = cColor;
-            }
-            fill.call(this, x, y, width, height);
-        };
-    };
-
-    const customColor = "#397bed";
-    const FillRect = CanvasRenderingContext2D.prototype.fillRect;
-
-    CanvasRenderingContext2D.prototype.fillRect = enhanceFillRect(FillRect, customColor);
-
-    CanvasRenderingContext2D.prototype.fillText = new Proxy(CanvasRenderingContext2D.prototype.fillText, {
-    apply: function (target, thisArg, argumentsList) {
-        thisArg.lineWidth = 8;
-        thisArg.strokeStyle = "black";
-        thisArg.strokeText.apply(thisArg, argumentsList);
-        return target.apply(thisArg, argumentsList);
-      }
-    });
-
 let hp2 = document.getElementById('hp2');
 var text = document.getElementById("trueorfalse");
-    const grid = document.querySelector('#grid-toggle');
-    const pingshw = document.querySelector('#display-ping-toggle');
-    grid.click();
-    pingshw.click();
